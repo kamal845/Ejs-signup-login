@@ -2,9 +2,19 @@ const express=require('express');
 const connectDB=require('./database/database');
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+const route=require('./routes/route');
 const path= require('path');
 app.set('view engine','ejs');
+app.set('views', path.join(__dirname, 'views'));
 port=4000;
+app.use('/',route);
+app.get('/',(req,res)=>{
+    res.render('signup', { message: null });
+    });  
+    app.get('/login', (req, res) => {
+        res.render('login', { message: null });
+    });
 try {
     app.listen(port, async (req,res) => {
         try {

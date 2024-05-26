@@ -10,8 +10,7 @@ Phone:{
 },
 Email:{
     type:String,
-    require:true,
-    unique: true
+    required:true
 },
 Password:{
     type:String,
