@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
-const signupschema=mongoose.Schema({
-Firstname:{
-    type:String,
-    required:true
-},
-Lastname:{
+const signupSchema=mongoose.Schema({
+Name:{
     type:String,
     required:true
 },
@@ -23,4 +19,4 @@ Password:{
 }
 })
 
-module.exports=mongoose.model('signup',signupschema);
+module.exports=mongoose.model('signup',signupSchema);
