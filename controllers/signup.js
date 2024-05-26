@@ -23,11 +23,11 @@ try {
             }
 
             const signups = await signupModel.create(signupData);
-            res.status(201).json({
-                status: "success",
-                message: "Data is created successfully",
-                data: signups
-            });
+            // res.status(201).json({
+            //     status: "success",
+            //     message: "Data is created successfully",
+            //     data: signups
+            // });
             return res.redirect('/login');
         } catch (error) {
             console.error("Error during signup:", error);
