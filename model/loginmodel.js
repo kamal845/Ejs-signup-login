@@ -8,7 +8,6 @@ const loginSchema = mongoose.Schema({
   Password: {
     type: String,
     required: true,
-    minlength: 3,
   },
   token: {
     type: String,

@@ -15,6 +15,9 @@ app.get('/',(req,res)=>{
     app.get('/login', (req, res) => {
         res.render('login', { message: null });
     });
+    app.get('/dashboard', (req, res) => {
+        res.render('dashboard');
+    });
 try {
     app.listen(port, async (req,res) => {
         try {

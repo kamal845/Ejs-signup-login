@@ -1,6 +1,7 @@
 const express =require('express');
 const mongoose=require('mongoose');
 const path=require('path');
+const bcrypt = require("bcryptjs");
 const signupModel=require('../model/signupmodel');
 module.exports={
     signup:async(req,res)=>{     
@@ -13,7 +14,6 @@ try {
         Password: req.body.password
     };
     console.log("Signup data:", signupData);
-            // Check if email already exists
             const existingUser = await signupModel.findOne({ Email: signupData.Email });
             if (existingUser) {
                 return res.status(400).json({
@@ -21,6 +21,9 @@ try {
                     message: "Email already exists"
                 });
             }
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(signupData.Password, saltRounds);
+            signupData.Password = hashedPassword;
 
             const signups = await signupModel.create(signupData);
             // res.status(201).json({
